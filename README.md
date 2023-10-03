@@ -188,6 +188,11 @@ This changeset can then be applied using `terraform apply`, a terminal prompt wi
 
 `.terraform.lock.hcl` contains the locked versioning for the providers and modules used in the project. This *should be comitted* to the **Version Control System (VCS)** that the project team is using, eg. Github. 
 
+#### Terraform Destroy
+
+`terraform destroy` will destroy terraform resources created in terraform. `--auto-approve` flag is also valid here.
+
+
 ### Terraform State Files
 
 `.terraform.tfstate` contains information about the current infrastructure's state and **should not be commited** to the VCS.

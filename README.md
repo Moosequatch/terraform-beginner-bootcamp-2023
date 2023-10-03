@@ -164,3 +164,34 @@ If it is succesful you should see a JSON payload return like this:
 ```
 
 AWS credentials will need to be generated from IAM User.
+
+### Terraform Basics
+
+#### Terraform Registry
+
+Terraform sources their providers from the Terraform registry which is located at [Terraform Registry](https://registry.terraform.io/).
+
+-Providers are APIs that give templates for creating resources in Terraform
+-Modules break down API into usable code snippets, making it easier to produce your own code within Terraform.
+
+#### Terraform Init
+
+`terraform init` is run at the beginning of a new terraform project to download binares used by providers designated in the project.
+
+#### Terraform Plan
+
+`terraform plan` generates a changeset, comparing existing code to a proposed change to the code.
+
+This changeset can then be applied using `terraform apply`, a terminal prompt will require you to type `yes` to proceed. Alternatively, an auto approve flag, `terraform apply --auto-approve` will bypass the need for an additional input.
+
+### Terraform Lock Files
+
+`.terraform.lock.hcl` contains the locked versioning for the providers and modules used in the project. This *should be comitted* to the **Version Control System (VCS)** that the project team is using, eg. Github. 
+
+### Terraform State Files
+
+`.terraform.tfstate` contains information about the current infrastructure's state and **should not be commited** to the VCS.
+
+### Terraform Directory
+
+`.terraform` directory contains binares of terraform providers.

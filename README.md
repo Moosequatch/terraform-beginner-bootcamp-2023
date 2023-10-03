@@ -188,6 +188,27 @@ This changeset can then be applied using `terraform apply`, a terminal prompt wi
 
 `.terraform.lock.hcl` contains the locked versioning for the providers and modules used in the project. This *should be comitted* to the **Version Control System (VCS)** that the project team is using, eg. Github. 
 
+#### Terraform Destroy
+
+`terraform destroy` will destroy terraform resources created in terraform. `--auto-approve` flag is also valid here.
+
+
+#### Terraform and AWS S3 Buckets
+
+[S3 Naming Rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+
+S3 Buckets **do not** accept special characters or capital letters. Terraform's `random_string` provider can be configured to include or exclude certain factors, e.g.:
+
+```
+resource "random_string" "bucket_name" {
+  lower            = true
+  upper            = false
+  length           = 32
+  special          = false
+}
+```
+[Hashicorp random_string Provider](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
+
 ### Terraform State Files
 
 `.terraform.tfstate` contains information about the current infrastructure's state and **should not be commited** to the VCS.
